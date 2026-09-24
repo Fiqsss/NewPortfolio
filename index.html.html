@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17171b" />
+    <title>ARO. — Links</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #17171b;
+        --panel: #202025;
+        --text: #f2f2f5;
+        --muted: #a5a5b0;
+        --line: #3a3a43;
+        --accent: #f34e8b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          14px/1.5 Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        min-height: 100vh;
+      }
+      .page {
+        width: min(100% - 32px, 420px);
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 36px 0 20px;
+      }
+      .profile {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #e5e5e7;
+        color: #24242a;
+        font-weight: 800;
+        font-size: 19px;
+        letter-spacing: -1px;
+        border: 1px solid #b8b8be;
+        box-shadow: 0 0 0 3px #222227;
+        position: relative;
+        overflow: hidden;
+      }
+      .avatar:after {
+        content: "";
+        position: absolute;
+        width: 58px;
+        height: 21px;
+        bottom: -8px;
+        background: #b7b7be;
+        border-radius: 50% 50% 0 0;
+      }
+      h1 {
+        font-size: 17px;
+        line-height: 1.3;
+        margin: 15px 0 5px;
+        font-weight: 650;
+        letter-spacing: -0.3px;
+      }
+      .role {
+        font-size: 12px;
+        color: #d1d1d7;
+        margin: 0;
+      }
+      .bio {
+        max-width: 300px;
+        color: #ececf0;
+        font-size: 12px;
+        line-height: 1.55;
+        margin: 18px 0 14px;
+      }
+      .socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin: 0 0 17px;
+      }
+      .socials a {
+        color: #bfc0c8;
+        display: grid;
+        place-items: center;
+        width: 16px;
+        height: 20px;
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          transform 0.2s;
+      }
+      .socials a:hover {
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .socials svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        padding: 3px 9px;
+        color: #79e6ad;
+        font:
+          9px/1.3 ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          monospace;
+        letter-spacing: 1.3px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        flex: 0 0 7px;
+        background: #19d782;
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 0 0 5px rgba(25, 215, 130, 0.7);
+        animation: status-glow 1.8s ease-in-out infinite;
+      }
+      @keyframes status-glow {
+        0%,
+        100% {
+          box-shadow:
+            0 0 3px rgba(25, 215, 130, 0.45),
+            0 0 6px rgba(25, 215, 130, 0.2);
+        }
+        50% {
+          box-shadow:
+            0 0 7px rgba(25, 215, 130, 0.95),
+            0 0 15px rgba(25, 215, 130, 0.65),
+            0 0 24px rgba(25, 215, 130, 0.28);
+        }
+      }
+      .group {
+        margin-top: 18px;
+      }
+      .heading {
+        text-align: center;
+        color: #bfc0c8;
+        font:
+          9px/1.4 ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          monospace;
+        letter-spacing: 3px;
+        margin: 0 0 11px;
+      }
+      .link-list {
+        display: grid;
+        gap: 10px;
+      }
+      .link-card {
+        min-height: 47px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 13px 8px 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #e8e8ed;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .link-card:hover {
+        background: #202a25;
+        border-color: #49e39a;
+        transform: translateY(-2px);
+        box-shadow:
+          0 0 0 1px rgba(73, 227, 154, 0.22),
+          0 0 14px rgba(43, 235, 139, 0.25),
+          0 0 30px rgba(43, 235, 139, 0.13);
+      }
+      .link-icon {
+        width: 21px;
+        height: 21px;
+        flex: 0 0 21px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        color: #222227;
+        font-weight: 700;
+      }
+      .link-label {
+        font-size: 11px;
+        flex: 1;
+      }
+      .arrow {
+        font-size: 17px;
+        line-height: 1;
+        color: #c5c5cc;
+        font-weight: 300;
+      }
+      footer {
+        margin-top: auto;
+        padding-top: 72px;
+        text-align: center;
+        font-size: 9px;
+        color: #e0e0e5;
+        line-height: 1.8;
+      }
+      footer .heart {
+        color: #f34e8b;
+      }
+      footer .source {
+        color: #72e8a7;
+      }
+      @media (min-width: 700px) {
+        .page {
+          padding-top: 46px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="profile">
+        <div class="avatar" aria-label="Logo ARO">A.</div>
+        <h1>Aro Fiqsss</h1>
+        <p class="role">Graphic Designer &amp; Visual Creator</p>
+        <p class="bio">
+          A graphic designer who loves creating playful, thoughtful, and
+          memorable visuals. Exploring branding, beauty campaigns, and digital
+          design.
+        </p>
+        <nav class="socials" aria-label="Social media">
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            ><svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r=".8"
+                fill="currentColor"
+                stroke="none"
+              /></svg
+          ></a>
+          <a
+            href="https://www.behance.net/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Behance"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M3 6h8a3 3 0 0 1 0 6H3zM3 12h9a3 3 0 0 1 0 6H3zM15 7h6M14 14h8a4 4 0 0 0-8 0zM14 14a4 4 0 0 0 8 2"
+              /></svg
+          ></a>
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            ><svg viewBox="0 0 24 24">
+              <rect x="3" y="8" width="4" height="13" />
+              <circle cx="5" cy="4.5" r="2" />
+              <path
+                d="M11 21V8h4v2a4 4 0 0 1 7 3v8h-4v-7a2 2 0 0 0-4 0v7z"
+              /></svg
+          ></a>
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.7c3.3-.4 6.8-1.6 6.8-7.2A5.6 5.6 0 0 0 20.3 4 5.2 5.2 0 0 0 20.2 0S18.9-.4 16 1.7a13.5 13.5 0 0 0-7 0C6.1-.4 4.8 0 4.8 0A5.2 5.2 0 0 0 4.7 4 5.6 5.6 0 0 0 3.2 8c0 5.6 3.5 6.8 6.8 7.2a3.4 3.4 0 0 0-1 2.7V22"
+              /></svg
+          ></a>
+        </nav>
+        <div class="availability"><span class="dot"></span>OPEN TO WORK</div>
+      </header>
+
+      <section class="group" aria-labelledby="featured">
+        <h2 class="heading" id="featured">FEATURED LINKS</h2>
+        <div class="link-list">
+          <a class="link-card" href="index.html"
+            ><span class="link-icon" style="background: #6be0a9">🌐</span
+            ><span class="link-label">My Portfolio</span
+            ><span class="arrow">↗</span></a
+          >
+          <a class="link-card" href="mailto:hello@arostudio.design"
+            ><span class="link-icon" style="background: #ffe36e">✎</span
+            ><span class="link-label">Let's Work Together</span
+            ><span class="arrow">↗</span></a
+          >
+          <a
+            class="link-card"
+            href="https://www.behance.net/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="link-icon" style="background: #ffb16e">▣</span
+            ><span class="link-label">Selected Projects</span
+            ><span class="arrow">↗</span></a
+          >
+          <a
+            class="link-card"
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="link-icon" style="background: #c9a5f3">▧</span
+            ><span class="link-label">Design Updates</span
+            ><span class="arrow">↗</span></a
+          >
+          <a class="link-card" href="mailto:hello@arostudio.design"
+            ><span class="link-icon" style="background: #7ab6f3">✉</span
+            ><span class="link-label">Contact Me</span
+            ><span class="arrow">↗</span></a
+          >
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="other">
+        <h2 class="heading" id="other">MORE LINKS</h2>
+        <div class="link-list">
+          <a
+            class="link-card"
+            href="https://dribbble.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="link-icon" style="background: #ff9ca7">◉</span
+            ><span class="link-label">Dribbble</span
+            ><span class="arrow">↗</span></a
+          >
+          <a
+            class="link-card"
+            href="https://www.pinterest.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="link-icon" style="background: #a5df75">P</span
+            ><span class="link-label">Pinterest Moodboards</span
+            ><span class="arrow">↗</span></a
+          >
+          <a
+            class="link-card"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="link-icon" style="background: #75dfd0">in</span
+            ><span class="link-label">LinkedIn</span
+            ><span class="arrow">↗</span></a
+          >
+          <a
+            class="link-card"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="link-icon" style="background: #a5b5f5">▶</span
+            ><span class="link-label">YouTube</span
+            ><span class="arrow">↗</span></a
+          >
+        </div>
+      </section>
+
+      <footer>
+        Crafted with <span class="heart">♥</span> by Aro Fiqsss<br /><span
+          class="source"
+          >Made with care · 2026</span
+        >
+      </footer>
+    </main>
+  </body>
+</html>
